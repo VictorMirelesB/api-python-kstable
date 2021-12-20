@@ -30,6 +30,59 @@ def get_kstable(GL: int, alfa: float):
       },
       {
         "name": "Carlos Ramos",
+      },
+      {
+        "name": "Brando Marca",
+      }
+    ]
+  }
+
+  return res
+
+@app.get("/get-normaldist")
+def get_normaldist(value: float):
+
+  from scipy.stats import norm
+
+  x = norm.ppf(value)
+
+  res = {
+    "data": x,
+    "value": value,
+    "Authors" : [
+      {
+        "name": "Victor Mireles",
+      },
+      {
+        "name": "Carlos Ramos",
+      },
+      {
+        "name": "Brando Marca",
+      }
+    ]
+  }
+
+  return res
+
+@app.get("/get-chisquare")
+def get_chisquare(GL: int, alfa: float):
+  
+  from scipy.stats import chi2
+  x = chi2.ppf(1-alfa, GL)
+
+  res = {
+    "data": x,
+    "Grado de Libertad": GL,
+    "Alfa": alfa,
+    "Authors" : [
+      {
+        "name": "Victor Mireles",
+      },
+      {
+        "name": "Carlos Ramos",
+      },
+      {
+        "name": "Brando Marca",
       }
     ]
   }
